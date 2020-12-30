@@ -1,0 +1,172 @@
+.pos 0x0
+
+  irmovq list, %rax
+  irmovq $0, %rsp
+  nop
+  nop
+  nop
+
+  mrmovq 0(%rax), %rbx
+  nop
+  nop
+  nop
+  rrmovq %rbx, %rdx
+  rrmovq %rbx, %rcx
+  nop
+  nop
+  nop
+  addq %rbx, %rcx
+  nop
+  nop
+  nop
+  subq %rbx, %rcx
+  nop
+  nop
+  nop
+  cmovge %rsp, %rbx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  rmmovq %rdx, 0(%rax)
+
+  mrmovq 8(%rax), %rbx
+  nop
+  nop
+  nop
+  rrmovq %rbx, %rdx
+  rrmovq %rbx, %rcx
+  nop
+  nop
+  nop
+  addq %rbx, %rcx
+  nop
+  nop
+  nop
+  subq %rbx, %rcx
+  nop
+  nop
+  nop
+  cmovge %rsp, %rbx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  rmmovq %rdx, 8(%rax)
+
+  mrmovq 16(%rax), %rbx
+  nop
+  nop
+  nop
+  rrmovq %rbx, %rdx
+  rrmovq %rbx, %rcx
+  nop
+  nop
+  nop
+  addq %rbx, %rcx
+  nop
+  nop
+  nop
+  subq %rbx, %rcx
+  nop
+  nop
+  nop
+  cmovge %rsp, %rbx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  rmmovq %rdx, 16(%rax)
+
+  mrmovq 24(%rax), %rbx
+  nop
+  nop
+  nop
+  rrmovq %rbx, %rdx
+  rrmovq %rbx, %rcx
+  nop
+  nop
+  nop
+  addq %rbx, %rcx
+  nop
+  nop
+  nop
+  subq %rbx, %rcx
+  nop
+  nop
+  nop
+  cmovge %rsp, %rbx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  rmmovq %rdx, 24(%rax)
+
+  mrmovq 32(%rax), %rbx
+  nop
+  nop
+  nop
+  rrmovq %rbx, %rdx
+  rrmovq %rbx, %rcx
+  nop
+  nop
+  nop
+  addq %rbx, %rcx
+  nop
+  nop
+  nop
+  subq %rbx, %rcx
+  nop
+  nop
+  nop
+  cmovge %rsp, %rbx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  subq %rbx, %rdx
+  nop
+  nop
+  nop
+  rmmovq %rdx, 32(%rax)
+
+  halt
+
+
+  .align 8
+list: .quad -2            #at end: 2
+      .quad 5             #at end: 5 
+      .quad -15           #at end: f
+      .quad 0             #at end: 0
+      .quad -1            #at end: 1

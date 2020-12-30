@@ -1,0 +1,78 @@
+.pos 0
+main:     irmovq stack, %rsp
+          #initialize %rdi to the number of
+          #fibonacci numbers to compute
+          irmovq $20, %rdi
+          #initialize %rsi to the address
+          #of where to store the numbers
+          irmovq fibolst, %rsi
+          # Store numbers
+          irmovq $1, %r9
+          irmovq $8, %r10
+          call fibo
+          halt
+# fibo 
+# Computes fibonacci numbers
+# param: %rdi - contains a count of the 
+#        number of fibonacci numbers to 
+#        compute
+# param: %rsi - contains the starting 
+#        address in memory of where to
+#        store the numbers
+#
+
+#Move counter.
+#Computer.
+#Send.
+#Repeat
+
+fibo:     #put your code here
+        #Test on r8, if list is 0, then add 1.
+        mrmovq (%rsi), %r8
+        andq %r8, %r8
+        je addspecial
+        #De loop time
+        addq %r10, %rsi
+        #Move values of r11 and r12 to r13 and r14
+        mrmovq 0(%r11), %r13
+        mrmovq 0(%r12), %r14
+        #Store the sum in rbp
+        addq %r13, %rbp
+        addq %r14, %rbp
+        rmmovq %rbp, (%rsi)
+        xorq %rbp,%rbp
+        addq %r10, %r11
+        addq %r10, %r12
+        
+        subq %r9, %rdi
+        je done
+        jmp fibo
+
+addspecial:
+        irmovq fibolst, %r11
+        irmovq fibolst, %r12
+        addq %r10, %rsi
+        subq %r9, %rdi
+        je done
+        addq %r10, %r12
+        rmmovq %r9, (%rsi)
+        addq %r10, %rsi
+        addq %r10, %r11
+        subq %r9, %rdi
+        je done
+        rmmovq %r9, (%rsi)
+        #addq %r10, %rsi
+        #addq %r10, %r11
+        #addq %r10, %r12
+        addq %r10, %r12
+        #addq %r10, %rsi
+        subq %r9, %rdi
+        je done
+        jmp fibo
+
+done:     ret
+#
+          .align 8
+fibolst:  .quad 0 
+          .pos 0x400 
+stack:
